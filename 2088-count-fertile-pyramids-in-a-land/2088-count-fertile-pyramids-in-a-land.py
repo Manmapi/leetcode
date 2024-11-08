@@ -23,7 +23,6 @@ class Solution:
                     start = 0
                     for i in range(n):
                         if row[i]:
-                            
                             if i + 1 - start >= l:
                                 left_index = i - l + 1
                                 if dp[h - 1][b_idx - 1][left_index + 1]:
@@ -32,6 +31,7 @@ class Solution:
                         else:
                             start = i + 1
                     current_level_pyramid[b_idx] = current_bottom
+                del dp[h - 1]
                 dp[h] = current_level_pyramid
             return result
         return helper(x) + helper(x[::-1])
