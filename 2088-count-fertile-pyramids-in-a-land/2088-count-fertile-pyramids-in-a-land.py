@@ -1,10 +1,11 @@
 class Solution:
     def countPyramids(self, x: List[List[int]]) -> int:
+        m = len(x)
+        n = len(x[0])
+        # Max height of pyramidal plot
+        mh = min((n + 1) // 2, m)
         def helper(grid):
-            m = len(grid)
-            n = len(grid[0])
-            # Max height of pyramidal plot
-            mh = min((n + 1) // 2, m)
+            
             # DP [height - 1][bottom][start_bottom]
             # Loop over each height
             dp = {}
