@@ -4,7 +4,7 @@ class Solution:
             m = len(grid)
             n = len(grid[0])
             # Max height of pyramidal plot
-            mh = (n + 1) // 2
+            mh = min((n + 1) // 2, m)
             # DP [height - 1][bottom][start_bottom]
             # Loop over each height
             dp = {}
