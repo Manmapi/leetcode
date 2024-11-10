@@ -1,11 +1,6 @@
 class Solution:
     def maximumBeauty(self, items: List[List[int]], queries: List[int]) -> List[int]:
-        item_dict = dict()
-        n = len(items)
-        for i in range(n):
-            if items[i][0] not in item_dict or items[i][1] > item_dict[items[i][0]]:
-                item_dict[items[i][0]] = items[i][1]
-        items = [[k, v] for k, v in item_dict.items()]
+
         n = len(items)
         items.sort()
         new_items = [items[0]]
