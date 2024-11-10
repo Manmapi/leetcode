@@ -8,8 +8,12 @@ class Solution:
         items = [[k, v] for k, v in item_dict.items()]
         n = len(items)
         items.sort()
+        new_items = [items[0]]
         for i in range(1, n):
-            items[i][1] = max(items[i][1], items[i - 1][1])
+            if items[i][1] > new_items[-1][1]:
+                new_items.append([items[i][0], items[i][1]])
+        items = new_items
+        n = len(items)
         result = []
         for q in queries:
             l = 0
