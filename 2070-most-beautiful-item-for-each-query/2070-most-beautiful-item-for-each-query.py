@@ -12,14 +12,12 @@ class Solution:
         for q in queries:
             l = 0
             r = n - 1
-            # flag = False
             while l <= r:
                 mid = (l + r) // 2
                 price, beauty = items[mid]
                 if price > q: 
                     r = mid - 1
                 else:
-                    # flag = True
                     l = mid + 1
             if r < 0 or l > n:
                 result.append(0)
