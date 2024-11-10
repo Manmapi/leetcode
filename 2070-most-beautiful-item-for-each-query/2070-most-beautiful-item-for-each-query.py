@@ -14,9 +14,8 @@ class Solution:
             l = 0
             r = n - 1
             while l <= r:
-                mid = (l + r) // 2
-                price, beauty = items[mid]
-                if price > q: 
+                mid = (l + r) // 2 
+                if items[mid][0] > q: 
                     r = mid - 1
                 else:
                     l = mid + 1
