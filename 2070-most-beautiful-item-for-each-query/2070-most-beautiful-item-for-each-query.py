@@ -24,7 +24,4 @@ class Solution:
             else:
                 return items[r][1]
         
-        result = []
-        for q in queries:
-            result.append(bs(q))
-        return result
+        return [bs(q) for q in queries]
