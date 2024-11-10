@@ -9,7 +9,8 @@ class Solution:
         items = new_items
         n = len(items)
         result = []
-        for q in queries:
+        @cache
+        def bs(q):
             l = 0
             r = n - 1
             while l <= r:
@@ -20,7 +21,9 @@ class Solution:
                 else:
                     l = mid + 1
             if r < 0 or l > n:
-                result.append(0)
+                return 0
             else:
-                result.append(items[r][1])
+                return items[r][1]
+        for q in queries:
+            result.append(bs(q))
         return result
