@@ -1,5 +1,5 @@
 # This function only run once
-def find_prime():
+def sieve_of_eratosthenes():
     # Find all primes < 1000
     non_primes = set([1])
     primes = set([2])
@@ -13,7 +13,7 @@ def find_prime():
                 non_primes.add(k * i)
                 k += 1
     return primes
-primes = find_prime()
+primes = sieve_of_eratosthenes()
 
 class Solution:
     def primeSubOperation(self, nums: List[int]) -> bool:
