@@ -4,7 +4,8 @@ class TimeMap:
         self.map = defaultdict(list)
 
     def set(self, key: str, value: str, timestamp: int) -> None:
-        bisect.insort_right(self.map[key], [timestamp, value], key=lambda x: x[0])
+        self.map[key].append([timestamp, value])
+        # bisect.insort_right(self.map[key], , key=lambda x: x[0])
 
     def get(self, key: str, timestamp: int) -> str:
         values = self.map[key]
