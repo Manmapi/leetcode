@@ -1,4 +1,4 @@
-# Find all primes < 1000
+# This function only run once
 def find_prime():
     # Find all primes < 1000
     non_primes = set([1])
@@ -13,8 +13,8 @@ def find_prime():
                 non_primes.add(k * i)
                 k += 1
     return primes
-
 primes = find_prime()
+
 class Solution:
     def primeSubOperation(self, nums: List[int]) -> bool:
         curr = 0
