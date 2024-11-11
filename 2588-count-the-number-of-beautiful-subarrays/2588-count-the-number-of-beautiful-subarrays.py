@@ -5,11 +5,7 @@ class Solution:
         for num in nums:
             prefix.append(num ^ prefix[-1])
         n = len(prefix)
-        counter = dict()
-        for p in prefix:
-            if p in counter:
-                res += counter[p]
-                counter[p] += 1
-            else:
-                counter[p] = 1
+        counter = Counter(prefix)
+        for k, v in counter.items():
+            res += v * (v - 1) // 2
         return res
