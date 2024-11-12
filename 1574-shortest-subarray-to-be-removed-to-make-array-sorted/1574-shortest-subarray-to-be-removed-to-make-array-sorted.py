@@ -7,10 +7,14 @@ class Solution:
         while left < n and arr[left] >= arr[left-1]:
             left += 1
         left -= 1
+        if (left == n - 1):
+            return 0
         right = n - 2
         while right >= 0 and arr[right] <= arr[right + 1]:
             right -= 1
         right += 1
+        if (right == 0):
+            return 0
 
         if left >= right:
             return 0
