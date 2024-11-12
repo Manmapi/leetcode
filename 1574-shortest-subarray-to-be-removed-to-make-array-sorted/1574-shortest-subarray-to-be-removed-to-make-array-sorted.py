@@ -18,8 +18,7 @@ class Solution:
             val = arr[i]
             while right < n and arr[right] < val:
                 right += 1
-            res = i + 1 + (n - right)
-            result = max(res, result)
+            result = max(i + 1 + (n - right), result)
             if right == n:
                 break
             i += 1
