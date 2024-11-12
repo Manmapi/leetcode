@@ -16,12 +16,9 @@ class Solution:
             return 0
         result = max(left + 1, n - right)
         i = 0
-        while i <= left:
-            val = arr[i]
-            while right < n and arr[right] < val:
+        while i <= left and right < n:
+            while right < n and arr[right] < arr[i]:
                 right += 1
             result = max(i + 1 + (n - right), result)
-            if right == n:
-                break
             i += 1
         return n - result
