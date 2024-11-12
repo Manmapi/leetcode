@@ -25,7 +25,7 @@ class Solution:
         dist = [-1] * n
         dist[0] = min_dist
         # Using DFS to check
-        @lru_cache(None)
+        @cache
         def dfs(index, target):
             if index == n - 1:
                 return True
@@ -41,6 +41,6 @@ class Solution:
                         edge_map[(index, x)] = True
                         edge_map[(x, index)] = True
             return result
-            
+
         val = dfs(0, min_dist)
         return [edge_map[(x, y)] for x, y, _ in edges]
