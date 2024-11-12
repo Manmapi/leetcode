@@ -1,25 +1,28 @@
 class Solution:
     def maximumBeauty(self, items: List[List[int]], queries: List[int]) -> List[int]:
-        # Binary search ???
         items.sort()
+        # Remove non-optimized items
         n = len(items)
+        new_items = [items[0]]
         for i in range(1, n):
-            items[i][1] = max(items[i][1], items[i - 1][1])
-        result = []
-        for q in queries:
+            if items[i][1] > new_items[-1][1]:
+                new_items.append([items[i][0], items[i][1]])
+        items = new_items
+        
+        n = len(items)
+        @lru_cache(None)
+        def bs(q):
             l = 0
             r = n - 1
-            flag = False
             while l <= r:
-                mid = (l + r) // 2
-                price, beauty = items[mid]
-                if price > q: 
+                mid = (l + r) // 2 
+                if items[mid][0] > q: 
                     r = mid - 1
                 else:
-                    flag = True
                     l = mid + 1
-            if not flag:
-                result.append(0)
+            if r < 0 or l > n:
+                return 0
             else:
-                result.append(items[r][1])
-        return result
+                return items[r][1]
+        
+        return [bs(q) for q in queries]
