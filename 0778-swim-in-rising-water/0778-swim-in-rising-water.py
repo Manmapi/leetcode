@@ -42,12 +42,13 @@ class Solution:
             return root(0) == root(n_2 - 1)
         # BS
         l, r = 0, n_2 - 1
-        while l < r:
+        while l <= r:
             mid = (l + r) // 2
             if union_find(vals[mid]):
                 r = mid - 1
             else:
                 l = mid + 1
+        # print(union_find(10), union_find(11))
         # print(vals)
         # print(l)
-        return max(grid[0][0], vals[l])
+        return (vals[l])
