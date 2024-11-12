@@ -18,7 +18,7 @@ class Solution:
             for x, cost in vertexs[index]:
                 if dist + cost < dist_array[x]:
                     dist_array[x] = dist + cost
-                    q.append((dist + cost, x))
+                    heapq.heappush(q, (dist + cost, x))
         # Using BFS to count way
         dist = [-1] * n
         dist[0] = min_dist
