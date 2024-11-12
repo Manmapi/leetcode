@@ -39,11 +39,14 @@ class Solution:
                     size[root_first] = size[root_first] + size[root_second]
             return root(0) == root(n_2 - 1)
         # BS
-        l, r = 0, n_2 - 1
+        l = 0
+        while vals[l] < grid[0][0] or vals[l] < grid[n-1][n-1]:
+            l += 1
+        r = n_2 - 1
         while l <= r:
             mid = (l + r) // 2
             if union_find(vals[mid]):
                 r = mid - 1
             else:
                 l = mid + 1
-        return (vals[l])
+        return vals[l]
