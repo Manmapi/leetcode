@@ -11,26 +11,24 @@ class Solution:
                 key = i * n + j
                 points = []
                 if i != 0:
-                    points.append((key - n, grid[i - 1][j]))
+                    points.append((i - 1, j))
                 if i != n - 1:
-                    points.append((key + n, grid[i + 1][j]))
+                    points.append((i + 1, j))
                 if j != 0:
-                    points.append((key - 1, grid[i][j - 1]))
+                    points.append((i, j - 1))
                 if j != n - 1:
-                    points.append((key + 1, grid[i][j + 1]))
-                vertexes[key] = points
+                    points.append((i, j + 1))
+                vertexes[(i, j)] = points
         # Distance, index
-        dist = [(grid[0][0], 0)]
-        visited = set()
+        dist = [(grid[0][0], 0, 0)]
+        visited = set((0, 0))
         while dist:
-            cost, index = heapq.heappop(dist)
+            cost, i, j = heapq.heappop(dist)
             # i, j = index // n, index % n
-            if index == n_2 - 1:
-                return max(cost, grid[n - 1][n - 1])
+            if i == n -1 and j == n - 1:
+                return cost
             visited.add(index)
-            for p, c in vertexes[index]:
-                if p not in visited:
-                    heapq.heappush(dist, (max(cost, c), p))
-        return 0
-        # 3 2 
-        # 0 1
+            for x, y in vertexes[(i, j)]:
+                if (x, y) not in visited:
+                    heapq.heappush(dist, (max(cost, grid[x][y]), x, y))
+                    visited.add((x, y))
