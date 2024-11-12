@@ -1,11 +1,13 @@
 class Solution:
     def findLengthOfShortestSubarray(self, arr: List[int]) -> int:
+        n = len(arr)
+
         start = [arr[0]]
         i = 1
-        n = len(arr)
         while i < n and arr[i] >= start[-1]:
             start.append(arr[i])
             i += 1
+
         end = [arr[-1]]
         i = n - 2
         while i >= 0 and arr[i]<= end[-1]:
