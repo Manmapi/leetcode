@@ -25,7 +25,6 @@ class Solution:
         dist = [-1] * n
         dist[0] = min_dist
         # Using DFS to check
-        @cache
         def dfs(index, target):
             if index == n - 1:
                 return True
