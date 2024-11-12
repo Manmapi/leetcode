@@ -1,15 +1,13 @@
 class Solution:
     def swimInWater(self, grid: List[List[int]]) -> int:
-        # Dijkstra
+        # Union find + BS
         n = len(grid)
         n_2 = n ** 2
         edges = []
-        max_ = 0
         vals = []
         for i in range(n):
             for j in range(n): 
                 key = i * n + j
-                max_ = max(grid[i][j], max_)
                 vals.append(grid[i][j])
                 val = grid[i][j]
                 if i != 0:
@@ -48,7 +46,4 @@ class Solution:
                 r = mid - 1
             else:
                 l = mid + 1
-        # print(union_find(10), union_find(11))
-        # print(vals)
-        # print(l)
         return (vals[l])
