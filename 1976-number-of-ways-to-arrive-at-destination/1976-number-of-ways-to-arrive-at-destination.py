@@ -2,9 +2,7 @@ class Solution:
     def countPaths(self, n: int, roads: List[List[int]]) -> int:
         MOD = 1_000_000_007
         # Using dijkstra to find min diff
-        vertexs = {
-            i: [] for i in range(n)
-        }
+        vertexs = {i: [] for i in range(n)}
         for x, y, time in roads:
             vertexs[x].append((y, time))
             vertexs[y].append((x, time))
@@ -36,4 +34,4 @@ class Solution:
                     dist[x] = target - cost
                     result += bfs(x, dist[x])
             return result % MOD
-        return bfs(0, min_dist) % MOD
+        return bfs(0, min_dist)
