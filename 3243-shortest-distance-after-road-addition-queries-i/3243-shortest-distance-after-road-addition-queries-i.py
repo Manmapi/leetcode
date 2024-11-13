@@ -1,13 +1,11 @@
 class Solution:
     def shortestDistanceAfterQueries(self, n: int, queries: List[List[int]]) -> List[int]:
         edge_map = {i: [i +1] if i != n - 1 else [] for i in range(n)}
-        
         history_map = {}
         result = [n]
-        # Restore bfs?????
+
         def bfs(start):
             nonlocal history_map
-            
             q = []
             if not history_map:
                 dist = 0
@@ -34,11 +32,10 @@ class Solution:
                             q_new.append(next_node)
                 dist += 1
                 q = q_new
+            return result[-1]
         bfs(0)
         for x, y in queries:
             edge_map[x].append(y)
             result.append(bfs(x))        
         return result[1:]
         
-
-            
