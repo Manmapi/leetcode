@@ -5,7 +5,6 @@ class Solution:
         result = [n]
 
         def bfs(start):
-            nonlocal history_map
             q = []
             if not history_map:
                 dist = 0
@@ -32,7 +31,7 @@ class Solution:
                             q_new.append(next_node)
                 dist += 1
                 q = q_new
-                
+
         bfs(0)
         for x, y in queries:
             edge_map[x].append(y)
