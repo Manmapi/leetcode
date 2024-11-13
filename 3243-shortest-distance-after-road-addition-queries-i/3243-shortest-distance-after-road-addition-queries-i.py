@@ -6,6 +6,7 @@ class Solution:
         # for x, y in queries:
         #     table[x][y] = 1
         edge_map = {i: [i +1] if i != n - 1 else [] for i in range(n)}
+        # @lru_cache(None)
         def bfs():
             q = deque()
             q.append([0, 0])
