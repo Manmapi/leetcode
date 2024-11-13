@@ -32,7 +32,7 @@ class Solution:
                             q_new.append(next_node)
                 dist += 1
                 q = q_new
-            return result[-1]
+                
         bfs(0)
         for x, y in queries:
             edge_map[x].append(y)
