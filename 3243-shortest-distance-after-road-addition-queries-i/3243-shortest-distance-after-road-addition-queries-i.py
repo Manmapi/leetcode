@@ -12,14 +12,16 @@ class Solution:
             q.append([0, 0])
             visited = set()
             while q:
-                node, dist = q.popleft()
-                visited.add(node)
-                if node == n -1:
-                    return dist
-                next_nodes = edge_map[node]
-                for next_node in next_nodes:
-                    if next_node not in visited:
-                        q.append([next_node, dist + 1])
+                q_new = []
+                for node, dist in q:
+                    visited.add(node)
+                    if node == n -1:
+                        return dist
+                    next_nodes = edge_map[node]
+                    for next_node in next_nodes:
+                        if next_node not in visited:
+                            q_new.append([next_node, dist + 1])
+                q = q_new
         result = []
         for x, y in queries:
             edge_map[x].append(y)
