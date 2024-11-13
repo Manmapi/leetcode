@@ -36,6 +36,9 @@ class Solution:
         bfs(0)
         for x, y in queries:
             edge_map[x].append(y)
-            result.append(bfs(x))        
+            if history_map[y] > history_map[x] + 1:
+                result.append(bfs(x))
+            else:
+                result.append(result[-1])        
         return result[1:]
         
