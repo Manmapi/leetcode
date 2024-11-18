@@ -2,7 +2,7 @@ class Solution:
     def minimumObstacles(self, grid: List[List[int]]) -> int:
         n = len(grid)
         m = len(grid[0])
-        cost = [[float("inf")] * m for _ in range(n)]
+        cost = [[m + n - 1] * m for _ in range(n)]
         cost[0][0] = 0
         q = set([(0, 0)])
         while q:
