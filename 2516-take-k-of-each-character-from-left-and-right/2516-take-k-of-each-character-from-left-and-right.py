@@ -5,6 +5,7 @@ class Solution:
         n = len(s)
         right = defaultdict(lambda: {0: n})
         a = b = c = 0
+        res = n
         for i in range(n - 1, -1, -1):
             if s[i] == "a":
                 a += 1
@@ -15,10 +16,13 @@ class Solution:
             else:
                 c += 1
                 right[s[i]][c] = i
+            if a >= k and b >= k and c >= k:
+                res = n - i
+                break
         if any([a < k, b < k, c < k]):
             return - 1
         a = b = c = 0
-        res = n
+        
         for i in range(n):
             if s[i] == "a":
                 a += 1
