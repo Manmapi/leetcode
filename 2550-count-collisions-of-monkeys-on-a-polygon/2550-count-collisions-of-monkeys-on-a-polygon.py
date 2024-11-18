@@ -20,4 +20,7 @@ class Solution:
         val = power(n) 
         if k % 2:
             val = MOD - val
-        return val - 2
+        res = val - 2
+        if res < 0:
+            res += MOD
+        return res
