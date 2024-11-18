@@ -17,4 +17,5 @@ class Solution:
             visited.add(index)
             visited.add(index + 1)
             visited.add(index - 1)
+            i += 1
         return score
