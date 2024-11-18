@@ -15,12 +15,12 @@ class Solution:
                     vertex[(i, j)].append([(i, j + 1), grid[i][j + 1]])
         cost = [[float("inf")] * m for _ in range(n)]
         cost[0][0] = 0
-        q = [[0, (0,0)]]
+        q = [(0, (0,0))]
         while q:
             value, point = heapq.heappop(q)
             for p, c in vertex[point]:
                 i, j = p
                 if cost[i][j] > value + c:
                     cost[i][j] = value + c
-                    heapq.heappush(q, [value + c, p])
+                    heapq.heappush(q, (value + c, p))
         return cost[-1][-1]
