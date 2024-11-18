@@ -23,5 +23,4 @@ class Solution:
                 if cost[i][j] > value + c:
                     cost[i][j] = value + c
                     heapq.heappush(q, [value + c, p])
-       
         return cost[-1][-1]
