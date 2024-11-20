@@ -22,7 +22,6 @@ class Solution:
         if any([a < k, b < k, c < k]):
             return - 1
         a = b = c = 0
-        
         for i in range(n):
             if s[i] == "a":
                 a += 1
