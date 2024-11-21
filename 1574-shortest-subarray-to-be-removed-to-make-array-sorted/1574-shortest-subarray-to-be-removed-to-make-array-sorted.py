@@ -15,9 +15,6 @@ class Solution:
         right += 1
         if (right == 0):
             return 0
-
-        if left >= right:
-            return 0
         result = max(left + 1, n - right)
         i = 0
         while i <= left and right < n:
