@@ -1,28 +1,27 @@
 class Solution:
     def minimumSize(self, nums: List[int], maxOperations: int) -> int:
-        
         n = len(nums)
         if n == 1:
             if nums[0] % (maxOperations + 1) == 0:
                 return nums[0] // (maxOperations + 1)
             else:
                 return nums[0] // (maxOperations + 1) + 1
-
+        nums.sort(reverse=True)
         def canit(target):
-            x = [-x for x in nums]
-            heapq.heapify(x)
             count = maxOperations
+            i = 0
             while maxOperations:
-                if not x:
+                if i >= n:
                     return True
-                value = -heapq.heappop(x)
+                value = nums[i]
                 if value <= target:
                     return True
                 k = ceil(value / target) - 1
                 if k > count:
                     return False
                 count -= k
-            return -x[0] <= target
+                i += 1
+            return i >= n or nums[i] <= target
         
         l = 1
         r = max(nums)
