@@ -1,6 +1,6 @@
 class Solution:
     def sumEvenAfterQueries(self, nums: List[int], queries: List[List[int]]) -> List[int]:
-        curr = sum(x for x in nums if x % 2 == 0)
+        curr = sum(x for x in nums if  not x & 1)
         result = []
         for val, i in queries:
             pre = nums[i]
