@@ -1,7 +1,6 @@
 class Solution:
     def minimumSize(self, nums: List[int], maxOperations: int) -> int:
-        if maxOperations == 1000000000:
-            return 99991
+        
         n = len(nums)
         if n == 1:
             if nums[0] % (maxOperations + 1) == 0:
@@ -14,6 +13,8 @@ class Solution:
             heapq.heapify(x)
             count = maxOperations
             while maxOperations:
+                if not x:
+                    return True
                 value = -heapq.heappop(x)
                 if value <= target:
                     return True
@@ -23,11 +24,12 @@ class Solution:
                 count -= k
             return -x[0] <= target
         
-        l = min(nums)
+        l = 1
         r = max(nums)
         while l <= r:
             mid = (l + r) // 2
             val = canit(mid)
+            print(mid, val)
             if val:
                 r = mid - 1
             else:
