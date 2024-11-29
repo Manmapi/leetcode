@@ -29,7 +29,6 @@ class Solution:
         while l <= r:
             mid = (l + r) // 2
             val = canit(mid)
-            print(mid, val)
             if val:
                 r = mid - 1
             else:
