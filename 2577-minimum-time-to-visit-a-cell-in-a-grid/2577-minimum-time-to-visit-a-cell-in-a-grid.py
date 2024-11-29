@@ -25,4 +25,3 @@ class Solution:
                 if dist[x + dx][y + dy] > cost:
                     dist[x + dx][y + dy] = cost
                     heapq.heappush(q, (cost, x + dx, y + dy))
-        return -1
