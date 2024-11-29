@@ -6,23 +6,13 @@ class Solution:
                 return nums[0] // (maxOperations + 1)
             else:
                 return nums[0] // (maxOperations + 1) + 1
-        nums.sort(reverse=True)
 
         def canit(target):
             count = maxOperations
             i = 0
-            while maxOperations:
-                if i >= n:
-                    return True
-                value = nums[i]
-                if value <= target:
-                    return True
-                k = ceil(value / target) - 1
-                if k > count:
-                    return False
-                count -= k
-                i += 1
-            return i >= n or nums[i] <= target
+            for i in range(n): 
+                count -= ceil(nums[i] / target) - 1
+            return count >= 0
         
         l = 1
         r = max(nums)
