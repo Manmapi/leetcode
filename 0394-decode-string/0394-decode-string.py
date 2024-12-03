@@ -25,7 +25,6 @@ class Solution:
                 sub_result = self.decodeString(sub_s[1:-1])
                 result += count * sub_result
                 i -= 1
-
             else:
                 result += c
             i += 1
