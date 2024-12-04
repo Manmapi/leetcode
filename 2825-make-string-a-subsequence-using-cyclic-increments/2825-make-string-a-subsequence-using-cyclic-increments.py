@@ -4,10 +4,12 @@ class Solution:
         m = len(str2)
         curr = 0
         for i in range(n):
-            val = ord(str1[i]) + 1
+            x = ord(str1[i])
+            val = x + 1
             if val >= 123:
                 val = 97
-            if val == ord(str2[curr]) or ord(str1[i]) == ord(str2[curr]):
+            y = ord(str2[curr])
+            if val == y or x == y:
                 curr += 1
                 if curr == m:
                     return True
