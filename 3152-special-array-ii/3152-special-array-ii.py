@@ -18,7 +18,6 @@ class Solution:
             for i in range(start, end + 1):
                 map_[i] = end
         result = []
-        print(chunks)
         for start, end in queries:
             if start != end and (start not in map_ or map_[start] < end):
                 result.append(False)
