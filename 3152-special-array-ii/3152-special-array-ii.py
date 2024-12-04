@@ -1,15 +1,16 @@
 class Solution:
     def isArraySpecial(self, nums: List[int], queries: List[List[int]]) -> List[bool]:
-        nums = [x & 1 for x in nums]
+        # nums = [x & 1 for x in nums]
         n = len(nums)
         l = 0
         chunks = []
         pre = nums[0]
         for i in range(1, n):
-            if not pre ^ nums[i]:
+            val = nums[i] & 1
+            if not pre ^ val:
                 chunks.append([l, i - 1])
                 l = i
-            pre = nums[i]
+            pre = val
             
         if l != n - 1:
             chunks.append([l, n - 1])
