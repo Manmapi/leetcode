@@ -14,7 +14,5 @@ class Solution:
         if l != n - 1:
             for j in range(l, n):
                 map_[j] = n - 1
-        result = []
-        for start, end in queries:
-            result.append(map_.get(start, start) >= end)               
-        return result
+        return [map_.get(start, start) >= end for start, end in queries]
+        
