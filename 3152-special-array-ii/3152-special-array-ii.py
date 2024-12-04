@@ -19,7 +19,7 @@ class Solution:
                 map_[i] = end
         result = []
         for start, end in queries:
-            if start != end and (start not in map_ or map_[start] < end):
+            if map_.get(start, start) < end:
                 result.append(False)
             else:
                 result.append(True)
