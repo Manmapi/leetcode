@@ -17,6 +17,7 @@ class Solution:
                     while stack and num - 2 * k > stack[0][0]:
                         value, count = stack.popleft()
                         curr -= count
+                    stack.append([num, 1])
                 curr += 1
                 if curr >= target:
                     return True
