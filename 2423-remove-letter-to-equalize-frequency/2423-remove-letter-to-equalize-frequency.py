@@ -9,10 +9,11 @@ class Solution:
         if len(x) == 1 and x[0][0] != 1 and x[0][1] != 1:
             return False
         if len(x) == 2: 
+            x.sort()
             if (x[0][0] == 1 and x[0][1] == 1) or (x[1][0] == 1 and x[1][1] == 1):
                 return True
-            if abs(x[0][0] - x[1][0]) != 1:
+            if x[1][0] - x[0][0] != 1:
                 return False
-            if x[0][1] != 1 and x[1][1] != 1:
+            if x[1][1] != 1:
                 return False
         return True    
