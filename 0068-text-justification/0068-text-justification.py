@@ -30,7 +30,7 @@ class Solution:
             n = len(r)
             for i in range(n - 1):
                 res += r[i]
-                if extra > pad * (n - i):
+                if extra > pad * (n - i - 1):
                     res += " " * (pad + 2)
                     extra -= pad + 1
                 else:
