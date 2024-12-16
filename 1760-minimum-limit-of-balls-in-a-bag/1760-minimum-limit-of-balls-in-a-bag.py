@@ -1,12 +1,6 @@
 class Solution:
     def minimumSize(self, nums: List[int], maxOperations: int) -> int:
         n = len(nums)
-        if n == 1:
-            if nums[0] % (maxOperations + 1) == 0:
-                return nums[0] // (maxOperations + 1)
-            else:
-                return nums[0] // (maxOperations + 1) + 1
-
         def canit(target):
             count = maxOperations
             i = 0
