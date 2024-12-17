@@ -12,6 +12,7 @@ class Solution:
         for i in range(1, m):
             for j in range(1, n):
                 prefix[i][j] = prefix[i - 1][j] + prefix[i][j - 1] - prefix[i - 1][j - 1] + mat[i][j]     
+        
         def possible(k):
             for i in range(k - 1, m):
                 for j in range(k - 1, n):
@@ -26,7 +27,6 @@ class Solution:
                     if x and y:
                         value += prefix[i - k][j - k]
                     if value <= threshold:
-                        print(i, j, value, k)
                         return True
             return False
         l, r = 0, min(m, n)
