@@ -15,8 +15,7 @@ class Solution:
             if not q[0].left:
                 break
             for node in q:
-                child.append(node.left)
-                child.append(node.right)
+                child.extend([node.left, node.right])
             n = len(q)
             child = child[::-1]
             for i in range(n):
