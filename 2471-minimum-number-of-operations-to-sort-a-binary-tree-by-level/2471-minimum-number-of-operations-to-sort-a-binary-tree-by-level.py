@@ -39,5 +39,4 @@ class Solution:
                 if curr not in visited:
                     cycle_count += 1
             result += cycle_count - 1
-
         return result
