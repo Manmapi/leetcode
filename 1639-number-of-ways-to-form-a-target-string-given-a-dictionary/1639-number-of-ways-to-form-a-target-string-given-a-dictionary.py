@@ -4,7 +4,7 @@ class Solution:
         n = len(target)
         m = len(words[0])
         # A table to with struct as [index][from_idx]. Which will store the total char with equal to target[index] from from_idx to n - 1
-        count_table = defaultdict(lambda: [0] * (m + 1))
+        count_table = defaultdict(lambda: [0] * m)
         for i in range(n):
             if target[i] in count_table:
                 continue
@@ -13,23 +13,15 @@ class Solution:
                 for word in words:
                     if word[j] == target[i]:
                         count += 1
-                count_table[target[i]][j] = count_table[target[i]][j + 1] + count
+                count_table[target[i]][j] = count
                 
         # Pick/drop DP
         @lru_cache(None)
         def dfs(index, current):
             if index == n:
                 return 1
-            char = target[index]
-            if index == n - 1:
-                return count_table[char][current]
-            if count_table[char][current] == 0:
+            if current == m:
                 return 0
-            result = 0
-            for i in range(current, m):
-                if count_table[char][i] == 0:
-                    break
-                if count_table[char][i] > count_table[char][i + 1]:
-                    result += dfs(index + 1, i + 1) * (count_table[char][i] - count_table[char][i + 1])
-            return result
+            char = target[index]
+            return dfs(index, current + 1) + dfs(index + 1, current + 1) * count_table[char][current]
         return dfs(0, 0) % MOD
