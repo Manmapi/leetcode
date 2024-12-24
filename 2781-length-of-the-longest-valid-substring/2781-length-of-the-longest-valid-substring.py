@@ -37,19 +37,17 @@ class Solution:
             index = trie.find(val)
             if index is not None:
                 forbidden_location.append([i, i + index])
-        forbidden_location.sort(key=lambda x: x[1])
         m = len(forbidden_location)
         if m == 0:
             return n
         result = 0
-        start = 0
-        index = 0
-        for i in range(n):
-            while i >= forbidden_location[index][1]:
-                start = max(start, forbidden_location[index][0] + 1)
-                index += 1
-                if index == m:
-                    return max(n - start, result)
-            result = max(i - start + 1, result)
-        result = max(n - start, result)
-        return result
+        start = n - 1
+        index = m - 1
+        for i in range(n - 1, -1, -1):
+            while i <= forbidden_location[index][0]:
+                start = min(start, forbidden_location[index][1] - 1)
+                index -=1
+                if index == -1:
+                    return max(start + 1, result)
+            result = max(start - i + 1, result)
+        return max(start + 1, result)
