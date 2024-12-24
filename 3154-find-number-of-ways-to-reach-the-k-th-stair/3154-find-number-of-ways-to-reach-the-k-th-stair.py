@@ -1,6 +1,6 @@
 class Solution:
     def waysToReachStair(self, k: int) -> int:
-        @cache
+        @lru_cache(None)
         def dp(current, power):
             if current > k + 1:
                 return 0
