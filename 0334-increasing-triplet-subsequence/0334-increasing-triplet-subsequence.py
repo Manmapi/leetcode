@@ -8,7 +8,6 @@ class Solution:
             if nums[i] >= max_:
                 suffix_table[i] = False
                 max_ = nums[i]
-        print(suffix_table)
         curr = nums[0]
         for i in range(1, n):
             if nums[i] > curr:
