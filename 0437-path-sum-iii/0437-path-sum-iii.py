@@ -10,13 +10,15 @@ class Solution:
         def dfs(node):
             if not node: return []
             next_val = dfs(node.left) + dfs(node.right)
-            next_val = [x + node.val for x in next_val]
-            next_val.append(node.val)
+            next_val.append(0)
+            next_result = []
             for val in next_val:
-                if val == targetSum:
+                value = val + node.val 
+                if value  == targetSum:
                     nonlocal count
                     count += 1
-            
-            return next_val
+                next_result.append(value)
+    
+            return next_result
         dfs(root)
         return count
