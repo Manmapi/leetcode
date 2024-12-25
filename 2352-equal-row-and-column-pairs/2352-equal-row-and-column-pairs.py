@@ -9,7 +9,7 @@ class Solution:
         for i in range(n):
             value = ""
             for row in grid:
-                value += str(row[i]) + "#"
+                value += f"{str(row[i])}#"
             value = value[:-1]
             result += counter[value]
         return result
