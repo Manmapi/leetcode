@@ -16,7 +16,6 @@ class Solution:
                 leaves1.append(node.val)
             if node.right:
                 q.append(node.right)
-        
         leaves2 = []
         q = [root2]
         while q:
