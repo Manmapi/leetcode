@@ -12,9 +12,9 @@ class Solution:
             if not node:
                 return 0
             result = 0
-            next_max = max(max_value, node.val)
             if max_value <= node.val:
                 result += 1
+                max_value = node.val
             
-            return result + helper(next_max, node.left) + helper(next_max, node.right)
+            return result + helper(max_value, node.left) + helper(max_value, node.right)
         return helper(root.val, root.left) + helper(root.val, root.right) + 1
