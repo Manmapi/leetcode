@@ -25,11 +25,10 @@ class Trie:
     def search_next(self, key, curr):
         next_chars = list(curr.keys())
         next_chars.sort()
-        next_chars = next_chars[:3] 
         next_results = []
         if curr.get("#", False):
             next_results.append("")
-        for next_char in next_chars:
+        for next_char in next_chars[:3]:
             if next_char == "#":
                 continue
             next_results.extend(self.search_next(next_char, curr[next_char]))
@@ -47,5 +46,7 @@ class Solution:
         result = []
         for c in searchWord:
             val += c
-            result.append(trie.search(val))
+            found = trie.search(val)
+            result.append(found)
+
         return result
