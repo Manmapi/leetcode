@@ -10,6 +10,5 @@ class Solution:
             value = ""
             for row in grid:
                 value += f"{str(row[i])}#"
-            value = value[:-1]
-            result += counter[value]
+            result += counter[value[:-1]]
         return result
