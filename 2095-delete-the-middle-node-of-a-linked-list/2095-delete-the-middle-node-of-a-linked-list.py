@@ -8,14 +8,13 @@ class Solution:
         # Fast and slow pickleball 
         fast, slow = head, head
         pre_slow = None
+        if head.next == None:
+            return None
         while fast.next:
             pre_slow = slow
             slow = slow.next
             fast = fast.next
             if fast.next:
                 fast = fast.next
-        if pre_slow:
-            pre_slow.next = pre_slow.next.next
-        else:
-            return None
+        pre_slow.next = pre_slow.next.next
         return head 
