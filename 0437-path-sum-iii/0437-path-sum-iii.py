@@ -9,16 +9,21 @@ class Solution:
         count = 0
         def dfs(node):
             if not node: return []
-            next_val = dfs(node.left) + dfs(node.right)
-            next_val.append(0)
+            nonlocal count
             next_result = []
-            for val in next_val:
+            for val in dfs(node.left):
                 value = val + node.val 
                 if value  == targetSum:
-                    nonlocal count
                     count += 1
                 next_result.append(value)
-    
+            for val in dfs(node.right):
+                value = val + node.val 
+                if value  == targetSum:
+                    count += 1
+                next_result.append(value)
+            if node.val == targetSum:
+                count += 1
+            next_result.append(node.val)
             return next_result
         dfs(root)
         return count
