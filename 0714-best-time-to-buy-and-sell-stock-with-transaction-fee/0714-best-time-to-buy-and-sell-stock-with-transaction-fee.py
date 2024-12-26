@@ -3,6 +3,7 @@ class Solution:
         not_have = 0
         have = -prices[0]
         for price in prices:
-            have = max(have, not_have - price)
+            tmp_not_have = not_have
             not_have = max(not_have, have + price - fee)
+            have = max(have, tmp_not_have - price)
         return not_have
