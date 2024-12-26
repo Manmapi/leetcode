@@ -6,7 +6,7 @@ class Solution:
         for start, end in points[1:]:
             if start > curr:
                 result += 1
-                curr = max(curr, end)
+                curr = end
             else:
                 curr = min(curr, end)
         return result + 1
