@@ -1,7 +1,7 @@
 class Solution:
     def findTargetSumWays(self, nums: List[int], target: int) -> int:
         n = len(nums)
-        @lru_cache(None)
+        @cache
         def dp(value, index):
             if index == n:
                 if value == target: 
