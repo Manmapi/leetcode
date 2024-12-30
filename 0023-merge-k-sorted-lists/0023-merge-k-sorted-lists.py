@@ -27,6 +27,7 @@ class Solution:
             if node2:
                 curr.next = node2
             return result
+            
         while len(lists) > 1:
             new_lists = []
             n = len(lists)
