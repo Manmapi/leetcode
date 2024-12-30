@@ -6,8 +6,5 @@ class Solution:
         def dp(value):
             if value > high:
                 return 0
-            result = 0
-            if value >= low:
-                result += 1
-            return (result + dp(value + x) + dp(value + y)) % MOD
+            return ((value >= low) + dp(value + x) + dp(value + y)) % MOD
         return dp(0) 
