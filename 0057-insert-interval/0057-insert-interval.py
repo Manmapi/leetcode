@@ -8,8 +8,13 @@ class Solution:
             if x <= end <= y:
                 return True
             return False
-        flag = False
+        if not intervals:
+            return [[x, y]]
         inserted = False
+        if y < intervals[0][0]:
+            result.append([x, y])
+            inserted = True
+        flag = False
         for start, end in intervals:
             val = is_overlapped(start, end)
             if val:
@@ -24,5 +29,6 @@ class Solution:
                 result.append([start, end])
         if not inserted:
             result.append([x, y])
+            result.sort()
         return result
             
