@@ -10,8 +10,10 @@ class Solution:
                     return float("inf")
             results = []
             if last is None:
-                results.append(min(costs) + dp(None, current + 1))
-                results.append(dp(current, current + 1))
+                return min(
+                    min(costs) + dp(None, current + 1),
+                    dp(current, current + 1)
+                )
             else:
                 if days[current] - days[last] < 7:
                     results.append(costs[1] + dp(None, current + 1))
