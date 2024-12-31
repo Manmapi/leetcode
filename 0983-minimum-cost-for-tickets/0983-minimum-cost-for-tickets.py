@@ -18,8 +18,7 @@ class Solution:
                     results.append(costs[1] + dp(None, current + 1))
                 if days[current] - days[last] < 30:
                     results.append(costs[2] + dp(None, current + 1))
-                # if days[current] - days[last] >= 30:
-                #     return float("inf")
+
                 results.append(dp(last, current + 1))
             result = min(results)
             return result
