@@ -4,7 +4,7 @@ class Trie:
 
     def insert(self, index, word: str) -> None:
         curr = self.child
-        idxs = set()
+        idxs = 0
         for c in word:
             if c not in curr:
                 curr[c] = {}
@@ -12,8 +12,9 @@ class Trie:
             if "idxs" in curr:
                 idxs |= curr["idxs"]
         if "idxs" not in curr:
-            curr["idxs"] = set()
-        curr["idxs"].add(index)
+            curr["idxs"] = 1 << index 
+        else:
+            curr["idxs"] |= 1 << index 
         return idxs
 
 class Solution:
@@ -25,6 +26,6 @@ class Solution:
         for i, word in enumerate(words):
             idxs = trie.insert(i, word)
             idxs_revert = trie_revert.insert(i, word[::-1])
-            val = len(idxs.intersection(idxs_revert))
-            result += val
+            val = idxs & idxs_revert
+            result += val.bit_count()
         return result
