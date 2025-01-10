@@ -6,6 +6,5 @@ class Solution:
         for num in nums:
             curr += num
             q[num - curr] += 1
-            target = k - curr
-            res += q.get(target, 0)
+            res += q.get(k - curr, 0)
         return res
