@@ -1,6 +1,7 @@
 class Solution:
     def unmarkedSumArray(self, nums: List[int], queries: List[List[int]]) -> List[int]:
         q = [(num, i) for i, num in enumerate(nums)]
+        heapq.heapify(q)
         marked = [False] * len(nums)
         total = sum(nums)
         result = []
