@@ -1,0 +1,26 @@
+class Solution:
+    def minTimeToReach(self, A: List[List[int]]) -> int:
+        n = len(A)
+        m = len(A[0])
+        costs = [[float('inf')] * m for _ in range(n)]
+        costs[0][0] = 0
+
+        q = [(0, 0, 0, False)]
+        next_ = {(0, 1), (0, -1), (1, 0), (-1, 0)}
+        while q:
+            cost, x, y, flag = heapq.heappop(q)
+            if x == n - 1 and y == m - 1:
+                return cost
+            fine = 1
+            if flag:
+                fine += 1
+            for i, j in next_:
+                x_ = x + i
+                y_ = y + j
+                if x_ < 0 or x_ >= n or y_ < 0 or y_ >= m:
+                    continue
+                n_cost = max(A[x_][y_] + fine, cost + fine)
+                if n_cost <= costs[x_][y_]:
+                    heapq.heappush(q, (n_cost, x_, y_, not flag))
+                    costs[x_][y_] = n_cost
+        return costs[-1][-1]
