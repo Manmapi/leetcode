@@ -12,7 +12,7 @@ class Solution:
             if x == n - 1 and y == m - 1:
                 return cost
             fine = 1
-            if (x + y) % 2 == 1:
+            if (x + y) % 2:
                 fine += 1
             for i, j in next_:
                 x_ = x + i
