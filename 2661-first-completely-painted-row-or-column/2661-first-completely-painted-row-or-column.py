@@ -6,8 +6,8 @@ class Solution:
         for i in range(n):
             for j in range(m):
                 track[mat[i][j]] = (i, j)
-        ver = defaultdict(int)
-        hor = defaultdict(int)
+        ver = [0] * (m + 1)
+        hor = [0] * (n + 1)
 
         for index, num in enumerate(arr):
             i, j = track[num]
