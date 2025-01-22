@@ -1,13 +1,7 @@
 class Solution:
     def solveNQueens(self, n: int) -> List[List[str]]:        
         def check(ver, hor, crossx, crossy, i, j):
-            if 1 << j & ver:
-                return False
-            if 1 << i & hor:
-                return False
-            if (1 << (i + j)) & crossx:
-                return False
-            if (1 << (j - i + n)) & crossy:
+            if 1 << j & ver or 1 << i & hor or (1 << (i + j)) & crossx or (1 << (j - i + n)) & crossy:
                 return False
             return True 
         
