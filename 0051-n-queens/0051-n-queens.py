@@ -1,10 +1,8 @@
 class Solution:
     def solveNQueens(self, n: int) -> List[List[str]]:        
         def check(ver, hor, crossx, crossy, i, j):
-            if 1 << j & ver or 1 << i & hor or (1 << (i + j)) & crossx or (1 << (j - i + n)) & crossy:
-                return False
-            return True 
-        
+            return not (1 << j & ver or 1 << i & hor or (1 << (i + j)) & crossx or (1 << (j - i + n)) & crossy)
+                
         def dfs(ver, hor, crossx, crossy, i):
             if i == n - 1:
                 return [
@@ -20,4 +18,3 @@ class Solution:
                         result.append(nr + ['.' * j + 'Q' + '.' * (n - j - 1)])
             return result
         return dfs(0, 0, 0, 0, 0)
-
