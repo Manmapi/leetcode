@@ -15,6 +15,15 @@ class Solution:
         @cache
         def dfs(ver, hor, crossx, crossy, i):
             nonlocal n
+            if i == n - 1:
+                base = ["."] * n
+                result = []
+                for j in range(n):
+                    curr = base.copy()
+                    curr[j] = "Q"
+                    if check(ver, hor, crossx, crossy, i, j):
+                        result.append(["".join(curr)])
+                return result
             result = []
             base = ["."] * n
             new_hor = (1 < i) | hor
@@ -22,12 +31,9 @@ class Solution:
                 curr = base.copy()
                 curr[j] = "Q"
                 if check(ver, hor, crossx, crossy, i, j):
-                    if i == n - 1:
-                        result.append(["".join(curr)])
-                    else: 
-                        next_result = dfs((1 << j) | ver, new_hor, 1 << (i + j) | crossx, 1 << (j - i + n) | crossy, i + 1)
-                        for nr in next_result:
-                            result.append(nr + ["".join(curr)])
+                    next_result = dfs((1 << j) | ver, new_hor, 1 << (i + j) | crossx, 1 << (j - i + n) | crossy, i + 1)
+                    for nr in next_result:
+                        result.append(nr + ["".join(curr)])
             return result
         return dfs(0, 0, 0, 0, 0)
 
