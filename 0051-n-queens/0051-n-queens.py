@@ -1,7 +1,6 @@
 class Solution:
     def solveNQueens(self, n: int) -> List[List[str]]:        
         def check(ver, hor, crossx, crossy, i, j):
-            nonlocal n
             if 1 << j & ver:
                 return False
             if 1 << i & hor:
@@ -12,9 +11,7 @@ class Solution:
                 return False
             return True 
         
-        @cache
         def dfs(ver, hor, crossx, crossy, i):
-            nonlocal n
             if i == n - 1:
                 base = ["."] * n
                 result = []
