@@ -8,8 +8,9 @@
  */
 object Solution {
     def levelOrder(root: TreeNode): List[List[Int]] = {
-        def bfs(roots: List[TreeNode]): List[List[Int]] = 
-            if roots.isEmpty then Nil: List[List[Int]]
+        @scala.annotation.tailrec
+        def bfs(roots: List[TreeNode], accumulate: List[List[Int]]): List[List[Int]] = 
+            if roots.isEmpty then accumulate
             else 
                 val nums = roots.foldLeft(List(): List[Int])((acc, x) => 
                    x match 
@@ -21,7 +22,7 @@ object Solution {
                         case t: TreeNode => List(t.left, t.right) ++ acc
                         case null  => acc 
                 ).reverse
-                nums::bfs(newRoots)
-        bfs(List(root)).dropRight(1)
+                bfs(newRoots, nums::accumulate)
+        bfs(List(root), Nil: List[List[Int]]).drop(1).reverse
     }
 }
