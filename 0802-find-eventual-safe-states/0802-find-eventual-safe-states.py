@@ -2,6 +2,7 @@ class Solution:
     def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
         n = len(graph)
         visited = dict()
+        @cache
         def dfs(node):
             if node in visited:
                 return visited[node]
